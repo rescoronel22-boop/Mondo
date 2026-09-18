@@ -15,5 +15,13 @@ Gli oggetti contenuti nella scatola possono essere presi tramite un'abilità chi
 
 Inventario:
 contiene una lista di oggetti -> quali proprietà devono rispettare?
+avere più costruttori -> beneficia del principio di over loading
+
+
+Avventuriero:
+l'avventuriero possiede il metodo apri scatola delega il metodo apri presente in Scatola
+possiede abilità prendi oggetto
+uso di metodi getter per accedere allo stato delle altre classi
+le variabili di stato devono essere private per proteggere i loro valori e avere più controllo su essi
 
 
