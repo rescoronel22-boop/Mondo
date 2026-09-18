@@ -1,0 +1,48 @@
+public class Avventuriero{
+	//Stato privato(INCAPSULAMENTO)
+	String nome;
+	String eta;
+	String sesso;
+	Double peso;
+	String classe; //principiante, verano, esperto
+	
+	//Costruttore
+	public Avventuriero(String nome, String eta, String sesso, Double peso, String classe){
+		this.nome = nome;
+		this.eta = eta;
+		this.sesso = sesso;
+		this.peso = peso;
+		this.classe = classe;
+	}
+		
+	//###METODI DI AVVENTURIERO###
+	//azioni che può eseguire l'avventuriero
+	public void apriScatola(Scatola scatola){
+		System.out.println(nome + " tenta di aprire la scatola...");
+		scatola.apri();	//chiama il metodo della Scatola
+	}
+	
+	public void chiudiScatola(Scatola scatola){
+		System.out.println(nome + " tenta di chiudere la scatola...");
+		scatola.chiudi();
+	}
+	
+	public void esaminaScatola(Scatola scatola){
+		System.out.println("esamina la scatola: ");
+		if(scatola.isAperta()){
+			System.out.println("è aperta!");
+			scatola.guardaDentro();
+		}else{
+			System.out.println("è chiusa");
+		}
+	}
+	
+	public void prendiOggetto(Scatola scatola, String oggetto){
+		System.out.println(nome + " prova a prendere " + oggetto + "...");
+		if(scatola.isAperta()){
+			scatola.evoca(oggetto);
+		}else{
+			System.out.println("Non può farlo: la scatola è chiusa...");
+		}
+	}
+}
