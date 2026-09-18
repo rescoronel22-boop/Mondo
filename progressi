@@ -1,0 +1,16 @@
+giorno 1:
+creazione di Mondo, Scatola, Inventario
+
+giorno 2:
+Scatola:
+abilità Evocazione -> serve a prendere gli oggetti dalla Scatola
+metodi gestione di stato di Scatola
+utilizzo principio di COMPOSIZIONE e INCAPSULAMENTO per implementare le proprietà della classe Inventario
+
+Inventario:
+metodo estrai
+
+
+giorno 3:
+creazione classe Avventuriero
+introduzione metodi getter in Scatola
