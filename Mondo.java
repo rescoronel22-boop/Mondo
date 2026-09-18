@@ -16,16 +16,45 @@ public class Mondo{
 		System.out.println("integra?: " + s.integra);
 		System.out.println("aperta?: " + s.aperta);
 		System.out.println("peso: " + s.pesoGr  + "g");
+
+		s.apri();
+		//s.guardaDentro();
+		//s.evoca("spada di Serpeverde");
+		s.riponi("spada di Serpeverde");
+        s.chiudi();
+		System.out.println("------------------------------------");
+		
+		//creazione oggetto Avventuriero
+		Avventuriero eroe = new Avventuriero("Ser", "25", "Maschio", 75.5, "Guerriero" );
+		
+		// 3. Prova delle azioni dell'Avventuriero sulla Scatola
+        eroe.esaminaScatola(s);
+        System.out.println();
+        
+        // Tenta di prendere la spada mentre la scatola è chiusa (fallirà)
+        eroe.prendiOggetto(s, "spada di Serpeverde");
+        System.out.println();
+        
+        // Apriamo la scatola e riproviamo
+        eroe.apriScatola(s);
+        eroe.esaminaScatola(s);
+        System.out.println();
+        
+        // Ora riuscirà a prendere la spada!
+        eroe.prendiOggetto(s, "spada di Serpeverde");
+        System.out.println();
+        
+        // Chiudiamo la scatola alla fine
+        eroe.chiudiScatola(s);
 	}
 }
 //per creare un Open World il server deve essere a loop infinito
 
 //oggetto prototipo
-class Equipaggiamento{
-	
-}
 
-//coda lista di oggetti da creare
+
+//###coda lista di oggetti da creare###
 //equipaggiamento
-//avventuriero
+//porta
+//mostro 
 
