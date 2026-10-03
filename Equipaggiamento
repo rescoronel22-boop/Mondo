@@ -1,0 +1,48 @@
+public class Equipaggiamento{
+	//stato
+	private Scatola[] oggetti;
+	private int quantità corrente
+	
+	//costruttore
+	public Equipaggiamento(){
+		this.oggetti = new Scatola[5];
+		this.quantitaCorrente = 0;
+	}
+	
+	//metodi
+	//aggiunge oggeto alla scatola se c'è spazio, true = riuscita, false = se pieno
+	public boolean aggiungiOggetto(Scatola s){
+		if(this.quantitaCorrente < 5){
+			this.oggetti[this.quantitaCorrente] = s;
+			this.quantitaCorrente++;
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean rimuoviOggetto(int indice){
+		if(indice >= 0 && indice < this.quantitaCorrente){
+			for(int i = indice; i < this.quantitaCorrente - 1; i++){
+				this.oggetti[i] = this.oggetti[i + 1];
+			}
+			this.oggetti[this.quantitaCorrente - 1] = null; // Pulisce l'ultimo slot
+            this.quantitaCorrente--;
+            return true;
+		}
+		return false;
+	}
+	
+	public int getQuantitaCorrente() {
+        return this.quantitaCorrente;
+    }
+    
+    /**
+     * Restituisce un oggetto specifico in base all'indice (senza rimuoverlo).
+     */
+    public Scatola getOggetto(int indice) {
+        if (indice >= 0 && indice < this.quantitaCorrente) {
+            return this.oggetti[indice];
+        }
+        return null;
+    }
+}
