@@ -11,7 +11,12 @@ public class Inventario{
 		this.aggiungi("pietra della guarigione");
 		this.aggiungi("cucciolo di drago Berserk");
 		this.aggiungi("dito di Sauron");
-		this.aggiungi("mantello dell'invicibilità" );
+		this.aggiungi("mantello dell'invicibilità");
+		this.aggiungi("pistola di legno");
+		this.aggiungi("fionda indiana");
+		this.aggiungi("martello di Loki");
+		this.aggiungi("scudo di Excalibur");
+		this.aggiungi("occhiali da sole");//easter egg
 	}	
 		
 	//costruttore 2: 
