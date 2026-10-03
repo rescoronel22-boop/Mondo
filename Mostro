@@ -1,0 +1,32 @@
+public class Mostro{
+	//stato
+	String tipologia;
+	int vita;
+	int puntiAttacco;
+	int puntiDifesa;
+	
+	//costruttore
+	public Mostro(){
+		this.tipologia = "Sconosciuta";
+		this.vita = 100;
+		this.puntiAttacco = 10;
+		this.puntoDifesa = 5;
+	}
+	
+	//costruttore con parametri
+	public Mostro(String tipologia, int vita, int puntiAttacco, int puntiDifesa){
+		this.tipologia = tipologia;
+		this.vita = vita;
+		this.puntiAttacco = puntiAttacco;
+		this.puntiDifesa = puntiDifesa;
+	}
+	
+	//metodi
+	public int attacco(){
+		return this.puntiAttacco;
+	}
+	
+	public int difesa(){
+		return this.puntiDifesa;
+	}
+}
