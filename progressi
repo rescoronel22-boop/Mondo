@@ -12,4 +12,7 @@ creazione classe Avventuriero
 metodi getter in Scatola
 
 giorno 4:
-classe mostro, equipaggiamento
+classe mostro, equipaggiamento, statistiche
+
+giorno 5:
+interfaccia iterativa, generatore eroe
