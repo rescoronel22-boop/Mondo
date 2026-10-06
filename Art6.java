@@ -1,0 +1,100 @@
+package extra;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
+
+public class Art6{
+    public static void stampaLogo(){
+		Scanner scanner = new Scanner(System.in);
+		
+		// Pulisce lo schermo del terminale e posiziona il cursore in alto a sinistra
+		System.out.print("\033[H\033[2J");
+		System.out.flush();
+		
+		String[] coloriRosaViola = {
+           // "\u001B[38;5;198m", // Rosa acceso (Hot Pink)
+           // "\u001B[38;5;163m", // Magenta / Viola Chiaro
+            "\u001B[38;5;127m", // Viola Intenso
+           // "\u001B[38;5;171m", // Lilla / Viola Brillante
+            "\u001B[38;5;205m", // Rosa Pastello
+            "\u001B[38;5;201m"  // Fuchsia
+        };
+		
+		final String RESET = "\u001B[0m";
+		
+        String asciiArt = """
+			⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠀⠠⠀⠀⠀⡇⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠀⠀⠈⠳⣴⣿⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠒⠒⠒⠒⠒⢺⢿⣿⢗⠒⠒⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠀⠀⠀⠁⣸⣿⣦⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠀⠀⢀⣾⡟⠋⢹⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠀⢀⣿⡟⣴⣶⡄⣿⣧⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⢰⣿⣿⣧⢻⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠈⢻⣿⣿⣷⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠀⢸⠿⣿⣿⣿⣿⣿⣿⣦⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠀⣾⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⡀⠀⠀⠀⠀⠀
+			⠀⠀⠀⠀⣿⣏⣻⣿⣿⣿⣿⣿⠋⣿⣿⣿⣿⣿⠙⣿⣷⣶⣤⣤⡄
+			⠀⠀⠀⠀⢻⢇⣿⣿⣿⣿⣿⠹⠀⢹⣿⣿⣿⡇⠀⢟⣿⣿⡿⠋⠀
+			⠀⠀⠀⠀⢘⣼⣿⣿⣿⣿⣿⡆⠀⢸⣿⠛⣿⡇⠀⢸⡿⠋⠀⠀⠀
+			⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣦⣈⠻⠴⠟⣁⣴⣿⣿⠗⠀⠀⠀
+			⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⠀⠀⠀
+			⠀⠀⢀⣿⣿⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⠀⠀⠀
+			⠀⠀⣾⣿⡏⠀⠹⣿⠿⠿⠿⠿⣿⣿⣿⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀
+			⠀⢰⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⠀⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀
+			⣰⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀
+			⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀
+
+		""";
+		
+		
+		// Stampa fissa immediata
+		System.out.println(coloriRosaViola[0] + asciiArt + RESET);
+		
+		//Pulisce lo schermo all'avvio
+        //System.out.print("\u001B[2J\u001B[H");
+		
+		
+		// Ciclo continuo per l'effetto animato di colore
+		// Ciclo continuo per l'effetto animato di colore
+	int index = 0;
+	try {
+		long tempoInizio = System.currentTimeMillis();
+		
+		while (true) {
+			// 1. Sposta il cursore in alto a sinistra (home)[cite: 5]
+			System.out.print("\u001B[H");
+
+			// 2. Stampa l'immagine col colore corrente[cite: 5]
+			System.out.print(coloriRosaViola[index] + asciiArt + RESET);
+			System.out.flush();
+
+			// 3. Passa al colore successivo[cite: 5]
+			index = (index + 1) % coloriRosaViola.length;
+
+			// 4. Velocità del cambio colore (200 ms)[cite: 5]
+			Thread.sleep(200);
+
+			// --- AGGIUNTA PER SBLOCCARE IL MAIN ---
+			// Se l'utente preme INVIO oppure se vuoi farlo durare ad esempio per 3 secondi, 
+			// puoi interrompere il ciclo. Ad esempio, se vuoi che si sblocchi con un tasto:
+			// (Nota: System.in.available() > 0 verifica se l'utente ha premuto qualcosa senza bloccare il terminale)
+			if (System.in.available() > 0) {
+				scanner.nextLine(); // Pulisce il buffer
+				break; // Esce dal while(true) e passa all'istruzione successiva del main!
+			}
+		}
+	} catch (Exception e) {
+		Thread.currentThread().interrupt();
+	}
+
+// ---> Da qui in poi il programma esce dal blocco e continua con il resto del main!
+		
+    }
+}
